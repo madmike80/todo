@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import styles from './App.module.css';
 
@@ -34,10 +29,10 @@ const App = () => (
         </NavLink>
       </menu>
     </header>
-    <section className={styles.content}>
-      <Route path='/' exact component={Todo} />
-      <Route path='/AboutMe' component={AboutMe} />
-    </section>
+    {/* <section className={styles.content}> */}
+    <Route path='/' exact component={Todo} />
+    <Route path='/AboutMe' component={AboutMe} />
+    {/* </section> */}
   </Router>
 );
 

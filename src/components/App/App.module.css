@@ -1,5 +1,5 @@
 .header {
-  padding: 1rem;
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   font-weight: bold;
@@ -37,10 +37,4 @@
   width: 100%;
   text-align: center;
   align-self: center;
-}
-
-.content {
-  border-radius: 9px;
-  max-height: 648px;
-  background: #fff;
 }

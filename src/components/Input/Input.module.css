@@ -1,0 +1,46 @@
+.form {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form__text {
+  height: 36px;
+  width: 100%;
+  margin-right: 0.5rem;
+  padding: 0 12px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 29px;
+}
+
+.form__text:focus {
+  outline: 0;
+  border: 2px solid #356eff;
+  border-radius: 29px;
+}
+
+.form__text::placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.form__text:focus::placeholder {
+  color: transparent;
+}
+
+.form__btn {
+  height: 36px;
+  width: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.form__btn:focus {
+  outline: 0;
+}

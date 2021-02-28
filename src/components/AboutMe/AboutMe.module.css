@@ -1,0 +1,14 @@
+.about,
+.repo {
+  border-radius: 9px;
+  background: #fff;
+}
+
+.about {
+  padding: 10px;
+  margin-bottom: 14px;
+}
+
+.repo {
+  padding: 4rem 2rem;
+}

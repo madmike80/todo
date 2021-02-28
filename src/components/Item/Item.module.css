@@ -1,0 +1,18 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.done {
+  text-decoration-line: line-through;
+  text-decoration-color: #000000;
+  color: #c4c4c4;
+}
+
+.item__value {
+  cursor: pointer;
+}
+
+.item__check {
+  cursor: pointer;
+}
