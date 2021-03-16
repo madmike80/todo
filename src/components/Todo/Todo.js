@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 import styles from './Todo.module.css';
-
-import Input from '../Input/Input';
+import Filter from '../Filter/Filter';
 import ItemList from '../ItemList/ItemList';
+import Input from '../Input/Input';
 
 const Todo = () => {
-  const appState = {
-    items: JSON.parse(localStorage.getItem('items')) || [],
-  };
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem('items')) || []
+  );
 
-  const [items, setItems] = useState(appState.items);
+  let [filter, setFilter] = useState('all');
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
@@ -42,9 +42,22 @@ const Todo = () => {
     setItems(newItemList);
   };
 
+  const handleRadioChange = (Event) => {
+    filter = Event.target.value;
+    setFilter(filter);
+  };
+
   return (
     <section className={styles.content}>
-      <ItemList items={items} onClickDone={onClickDone} />
+      <header className={styles.todoHeader}>
+        <h1 className={styles.todoHeader__title}>Список моих дел</h1>
+        <Filter
+          filter={filter}
+          items={items}
+          handleRadioChange={handleRadioChange}
+        />
+      </header>
+      <ItemList items={items} filter={filter} onClickDone={onClickDone} />
       <Input onClickAdd={onClickAdd} />
     </section>
   );

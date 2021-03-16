@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import styles from './App.module.css';
-
 import logo from './img/whs-logo.svg';
 import AboutMe from '../AboutMe/AboutMe';
 import Todo from '../Todo/Todo';
@@ -29,10 +28,9 @@ const App = () => (
         </NavLink>
       </menu>
     </header>
-    {/* <section className={styles.content}> */}
+
     <Route path='/' exact component={Todo} />
     <Route path='/AboutMe' component={AboutMe} />
-    {/* </section> */}
   </Router>
 );
 

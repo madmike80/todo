@@ -16,3 +16,7 @@
 .item__check {
   cursor: pointer;
 }
+
+.hide {
+  display: none;
+}
