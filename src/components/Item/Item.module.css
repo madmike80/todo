@@ -1,6 +1,17 @@
 .item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  cursor: grabbing;
+  border: 1px solid #cccccc;
+  border-radius: 41px;
+  height: 36px;
+  margin-bottom: 0.5rem;
+  padding: 0 0.75rem;
+}
+
+.item:hover {
+  border-color: #356eff;
 }
 
 .done {
@@ -8,15 +19,66 @@
   text-decoration-color: #000000;
   color: #c4c4c4;
 }
-
+/* label */
 .item__value {
   cursor: pointer;
+  font-size: 14px;
+  line-height: 16px;
+  position: relative;
+}
+/* input */
+.item__check {
+  visibility: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
-.item__check {
-  cursor: pointer;
+.item__value span {
+  position: relative;
+  padding: 0 0 0 2rem;
+}
+
+.item__value span::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #356eff;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+  background: #ffffff;
+}
+
+.item__value span:hover:before {
+  background: #b2c2e2;
+}
+
+.item__value .item__check:checked + span::before {
+  background-image: url(./img/success.png);
 }
 
 .hide {
   display: none;
+}
+
+.item__delBtn {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.item__delBtn:focus {
+  outline: 0;
+}
+
+.item:hover .item__delBtn {
+  opacity: 1;
 }

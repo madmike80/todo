@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 
 import styles from './Item.module.css';
+import delButton from './img/del.png';
 
 const Item = ({ value, isDone, onClickDone, id, filter }) => (
   <li
@@ -20,8 +21,11 @@ const Item = ({ value, isDone, onClickDone, id, filter }) => (
         checked={isDone}
         onChange={() => onClickDone(id)}
       />
-      {value}
+      <span>{value}</span>
     </label>
+    <button className={styles.item__delBtn}>
+      <img src={delButton} alt='delete' />
+    </button>
   </li>
 );
 

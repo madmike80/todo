@@ -3,6 +3,21 @@
   height: 100%;
 }
 
+.list {
+  padding: 0;
+  overflow-y: scroll;
+}
+
+.list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 9px;
+  height: 304px;
+}
+
 .noCase {
   display: flex;
   flex-direction: column;
