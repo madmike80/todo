@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import styles from './Filter.module.css';
 
-const Filter = ({ items, filter, handleRadioChange }) => {
+const Filter = ({ items, filter, onClickFilter }) => {
   let doneTask = items.filter((item) => item.isDone).length;
   let activeTask = items.filter((item) => !item.isDone).length;
   return (
@@ -18,7 +18,7 @@ const Filter = ({ items, filter, handleRadioChange }) => {
           type='radio'
           name='filter'
           value='done'
-          onChange={handleRadioChange}></input>
+          onClick={onClickFilter}></input>
         Завершенные
         <span className={styles.count}>{doneTask}</span>
       </label>
@@ -32,7 +32,7 @@ const Filter = ({ items, filter, handleRadioChange }) => {
           type='radio'
           name='filter'
           value='active'
-          onChange={handleRadioChange}></input>
+          onClick={onClickFilter}></input>
         Незавершенные
         <span className={styles.count}>{activeTask}</span>
       </label>
@@ -46,7 +46,7 @@ const Filter = ({ items, filter, handleRadioChange }) => {
           type='radio'
           name='filter'
           value='all'
-          onChange={handleRadioChange}></input>
+          onClick={onClickFilter}></input>
         Все
       </label>
     </div>

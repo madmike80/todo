@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import styles from './Input.module.css';
+import classnames from 'classnames';
 import addButton from './img/plus.png';
 
 const Input = ({ onClickAdd }) => {
@@ -14,21 +15,28 @@ const Input = ({ onClickAdd }) => {
   const [error, setError] = useState(inputState.error);
   const [helperText, setHelperText] = useState(inputState.helperText);
 
-  const onAddTasck = () => {
+  const onAddTask = () => {
     if (inputValue.length > 0) {
-      const newInputValue = '';
-      setInputValue(newInputValue);
+      // const newInputValue = '';
+      // setInputValue(newInputValue);
       onClickAdd(inputValue);
     } else {
       const newHalperText = 'Поле не должно быть пустым!';
-      const newError = true;
+      // const newError = true;
       setHelperText(newHalperText);
-      setError(newError);
+      setError(true);
     }
   };
 
   return (
     <form className={styles.form}>
+      <div
+        className={classnames({
+          [styles.error]: error,
+          [styles.error_hide]: !error,
+        })}>
+        {helperText}
+      </div>
       <input
         className={styles.form__text}
         type='text'
@@ -37,11 +45,10 @@ const Input = ({ onClickAdd }) => {
         onChange={(event) => {
           setInputValue(event.target.value);
           setHelperText('');
-          setError(false);
         }}
       />
       <button className={styles.form__btn}>
-        <img src={addButton} alt='add' onClick={onAddTasck} />
+        <img src={addButton} alt='add' onClick={onAddTask} />
       </button>
     </form>
   );

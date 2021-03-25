@@ -60,10 +60,6 @@
   background-image: url(./img/success.png);
 }
 
-.hide {
-  display: none;
-}
-
 .item__delBtn {
   width: 16px;
   height: 16px;
