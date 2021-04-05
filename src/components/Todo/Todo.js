@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { v1 as uuidv1 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import styles from './Todo.module.css';
 import Filter from '../Filter/Filter';
@@ -24,7 +24,7 @@ const Todo = () => {
       {
         value,
         isDone: false,
-        id: uuidv1(),
+        id: uuidv4(),
       },
     ];
     setItems(newTask);
@@ -54,6 +54,23 @@ const Todo = () => {
     setItems(newItemList);
   };
 
+  const handleDragEnd = ({ destination, source }) => {
+    if (!destination) {
+      return;
+    }
+
+    if (destination.index === source.index) {
+      return;
+    }
+
+    const newItemList = [...items];
+
+    const [deletedItem] = newItemList.splice(source.index, 1);
+    newItemList.splice(destination.index, 0, deletedItem);
+
+    setItems([...newItemList]);
+  };
+
   const onClickFilter = (Event) => {
     filter = Event.target.value;
     setFilter(filter);
@@ -75,23 +92,21 @@ const Todo = () => {
   }
 
   return (
-    <DragDropContext>
-      <section className={styles.content}>
-        <header className={styles.todoHeader}>
-          <h1 className={styles.todoHeader__title}>Список моих дел</h1>
-          <Filter filter={filter} items={items} onClickFilter={onClickFilter} />
-        </header>
-
+    <section className={styles.content}>
+      <header className={styles.todoHeader}>
+        <h1 className={styles.todoHeader__title}>Список моих дел</h1>
+        <Filter filter={filter} items={items} onClickFilter={onClickFilter} />
+      </header>
+      <DragDropContext onDragEnd={handleDragEnd}>
         <ItemList
           items={filteredTaskList}
           filter={filter}
           onClickDone={onClickDone}
           onClickDel={onClickDel}
         />
-
-        <Input onClickAdd={onClickAdd} />
-      </section>
-    </DragDropContext>
+      </DragDropContext>
+      <Input onClickAdd={onClickAdd} />
+    </section>
   );
 };
 

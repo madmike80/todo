@@ -9,20 +9,27 @@ const ItemList = ({ items, onClickDone, filter, onClickDel }) => {
   return (
     <React.Fragment>
       {items.length > 0 ? (
-        <Droppable>
-          <ul className={styles.list}>
-            {items.map((item) => (
-              <Item
-                value={item.value}
-                isDone={item.isDone}
-                filter={filter}
-                id={item.id}
-                key={item.id}
-                onClickDone={onClickDone}
-                onClickDel={onClickDel}
-              />
-            ))}
-          </ul>
+        <Droppable droppableId={'droppable'}>
+          {(provided) => (
+            <ul
+              className={styles.list}
+              ref={provided.innerRef}
+              {...provided.droppableProps}>
+              {items.map((item, index) => (
+                <Item
+                  value={item.value}
+                  isDone={item.isDone}
+                  filter={filter}
+                  id={item.id}
+                  key={item.id}
+                  index={index}
+                  onClickDone={onClickDone}
+                  onClickDel={onClickDel}
+                />
+              ))}
+              {provided.placeholder}
+            </ul>
+          )}
         </Droppable>
       ) : (
         <div className={styles.noCase}>
