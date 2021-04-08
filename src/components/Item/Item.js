@@ -6,12 +6,13 @@ import styles from './Item.module.css';
 import delButton from './img/del.png';
 
 const Item = ({ value, isDone, onClickDone, id, onClickDel, index }) => (
-  <Draggable draggableId={id} index={index}>
-    {(provided) => (
+  <Draggable className={styles.dragItem} draggableId={id} index={index}>
+    {(provided, snapshot) => (
       <li
         className={classnames({
           [styles.item]: true,
           [styles.done]: isDone,
+          [styles.dragging]: snapshot.isDragging,
         })}
         ref={provided.innerRef}
         {...provided.draggableProps}

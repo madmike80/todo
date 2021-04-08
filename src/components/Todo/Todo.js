@@ -12,7 +12,7 @@ const Todo = () => {
     JSON.parse(localStorage.getItem('items')) || []
   );
 
-  let [filter, setFilter] = useState('active');
+  let [filter, setFilter] = useState('all');
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
@@ -54,6 +54,24 @@ const Todo = () => {
     setItems(newItemList);
   };
 
+  const onClickFilter = (Event) => {
+    filter = Event.target.value;
+    setFilter(filter);
+  };
+
+  let filterTodos = [];
+  switch (filter) {
+    case 'all':
+      filterTodos = items;
+      break;
+    case 'done':
+      filterTodos = items.filter((item) => item.isDone);
+      break;
+    case 'active':
+      filterTodos = items.filter((item) => !item.isDone);
+      break;
+  }
+
   const handleDragEnd = ({ destination, source }) => {
     if (!destination) {
       return;
@@ -64,32 +82,11 @@ const Todo = () => {
     }
 
     const newItemList = [...items];
-
     const [deletedItem] = newItemList.splice(source.index, 1);
     newItemList.splice(destination.index, 0, deletedItem);
 
     setItems([...newItemList]);
   };
-
-  const onClickFilter = (Event) => {
-    filter = Event.target.value;
-    setFilter(filter);
-  };
-
-  let filteredTaskList = [];
-  switch (filter) {
-    case 'all':
-      filteredTaskList = items;
-      break;
-    case 'done':
-      filteredTaskList = items.filter((item) => item.isDone);
-      break;
-    case 'active':
-      filteredTaskList = items.filter((item) => !item.isDone);
-      break;
-    default:
-      filteredTaskList = items;
-  }
 
   return (
     <section className={styles.content}>
@@ -99,7 +96,7 @@ const Todo = () => {
       </header>
       <DragDropContext onDragEnd={handleDragEnd}>
         <ItemList
-          items={filteredTaskList}
+          items={filterTodos}
           filter={filter}
           onClickDone={onClickDone}
           onClickDel={onClickDel}

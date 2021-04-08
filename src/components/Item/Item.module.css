@@ -10,6 +10,10 @@
   padding: 0 0.75rem;
 }
 
+.item.dragging {
+  background: #ffffff;
+}
+
 .item:hover {
   border-color: #356eff;
 }
