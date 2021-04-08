@@ -1,0 +1,40 @@
+.header {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.header__logo {
+  align-self: center;
+  justify-self: start;
+  padding: 5px;
+}
+
+.menu {
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu__link {
+  width: 103px;
+  height: 44px;
+  display: flex;
+  text-decoration: none;
+  color: #000;
+}
+
+.menu__link_activ {
+  border-radius: 37px;
+  background: #356eff;
+  color: #fff;
+}
+
+.menu__linkItem {
+  width: 100%;
+  text-align: center;
+  align-self: center;
+}

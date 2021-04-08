@@ -1,0 +1,19 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  height: 648px;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.todoHeader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.todoHeader__title {
+  margin: 0;
+  flex-basis: 50%;
+}
