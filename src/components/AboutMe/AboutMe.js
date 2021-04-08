@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { Octokit } from '@octokit/rest';
 
 import styles from './AboutMe.module.css';
@@ -15,10 +14,7 @@ const octokit = new Octokit();
 const AboutMe = () => {
   const [state, setState] = useState({
     username: 'madmike80',
-    isLoading: true,
     userInfo: [],
-    repoList: [],
-    incorrectRequest: false,
   });
 
   useEffect(() => {
