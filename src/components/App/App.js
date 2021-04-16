@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Switch,
+} from 'react-router-dom';
 
 import styles from './App.module.css';
 import logo from './img/whs-logo.svg';
@@ -18,20 +23,20 @@ const App = () => (
           exact
           className={styles.menu__link}
           activeClassName={styles.menu__link_activ}>
-          <span className={styles.menu__linkItem}>Дела</span>
+          Дела
         </NavLink>
         <NavLink
-          to='/AboutMe'
-          exact
+          to='/about'
           className={styles.menu__link}
           activeClassName={styles.menu__link_activ}>
-          <span className={styles.menu__linkItem}>Обо мне</span>
+          Обо мне
         </NavLink>
       </menu>
     </header>
-
-    <Route path='/' exact component={Todo} />
-    <Route path='/AboutMe' component={AboutMe} />
+    <Switch>
+      <Route exact path='/' component={Todo} />
+      <Route path='/about' component={AboutMe} />
+    </Switch>
   </Router>
 );
 

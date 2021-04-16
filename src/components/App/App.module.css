@@ -23,6 +23,8 @@
   width: 103px;
   height: 44px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   color: #000;
 }
@@ -31,10 +33,4 @@
   border-radius: 37px;
   background: #356eff;
   color: #fff;
-}
-
-.menu__linkItem {
-  width: 100%;
-  text-align: center;
-  align-self: center;
 }
