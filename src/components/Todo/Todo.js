@@ -12,7 +12,7 @@ const Todo = () => {
     JSON.parse(localStorage.getItem('items')) || []
   );
 
-  let [filter, setFilter] = useState('all');
+  let [filter, setFilter] = useState('active');
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
@@ -102,7 +102,7 @@ const Todo = () => {
           onClickDel={onClickDel}
         />
       </DragDropContext>
-      <Input onClickAdd={onClickAdd} />
+      <Input items={items} onClickAdd={onClickAdd} />
     </section>
   );
 };

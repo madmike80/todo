@@ -22,6 +22,7 @@ const App = () => (
         </NavLink>
         <NavLink
           to='/AboutMe'
+          exact
           className={styles.menu__link}
           activeClassName={styles.menu__link_activ}>
           <span className={styles.menu__linkItem}>Обо мне</span>
