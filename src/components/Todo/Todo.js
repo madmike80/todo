@@ -12,7 +12,7 @@ const Todo = () => {
     JSON.parse(localStorage.getItem('items')) || []
   );
 
-  let [filter, setFilter] = useState('active');
+  let [filter, setFilter] = useState('all');
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
